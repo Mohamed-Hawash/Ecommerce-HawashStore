@@ -1,0 +1,2406 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hawash | Online Store</title>
+
+    <!-- Apply saved theme before first paint to avoid a light-mode flash -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (e) { }
+        })();
+    </script>
+
+    <link href="img/icon.png" rel="icon" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+    
+</head>
+
+<body>
+    <section class="main-navbar">
+        <div class="container d-flex align-items-center justify-content-between py-1 border-bottom border-secondary">
+            <div class="fImage">
+                <img src="img/white_logo.png" alt="main-Logo" />
+            </div>
+
+            <div class="input-group search-group mx-3" dir="ltr">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle search-dropdown" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        All Categories
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item active" href="#deals">All Categories</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#electronics">Electronics & Digita</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#mobiles">Phones & Tablety</a></li>
+                        <li><a class="dropdown-item" href="#deals">Fashion & Clothings</a></li>
+                        <li><a class="dropdown-item" href="#electronics">Telivsion & Monitor</a></li>
+                        <li><a class="dropdown-item" href="#deals">Jewelry & Watches</a></li>
+                        <li><a class="dropdown-item" href="#appliances">Washing Machine</a></li>
+                        <li><a class="dropdown-item" href="#deals">Toys & Hobbies</a></li>
+                    </ul>
+                </div>
+
+                <input type="text" class="form-control custom-input" id="searchInput"
+                    placeholder="Search For Products" />
+
+                <button class="btn btn-orange px-3" type="button" id="searchBtn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+
+            <div class="d-flex align-items-center navbar-icons-area">
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark mode"
+                    aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+
+                <a href="#" class="header-icon-link" id="fpToggleBtn">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge-count" id="fpBadge">0</span>
+                </a>
+
+                <div class="fp-overlay" id="fpOverlay"></div>
+
+                <div class="fp-panel" id="fpPanel">
+                    <div class="fp-header">
+                        <h2>Favorites : <span id="fpCount">0</span></h2>
+                        <button class="fp-close-btn" id="fpCloseBtn">✕</button>
+                    </div>
+
+                    <div class="fp-items" id="fpItemsContainer">
+                        <div class="fp-empty" id="fpEmptyState">
+                            لسه مضفتش أي منتج للمفضلة
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <a href="#" class="header-icon-link" id="mcToggleBtn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge-count" id="mcBadge">0</span>
+                </a>
+
+                <div class="mc-overlay" id="mcOverlay"></div>
+
+                <div class="mc-panel" id="mcPanel">
+                    <div class="mc-header">
+                        <h2>Cart Items : <span id="mcCount">0</span></h2>
+                        <button class="mc-close-btn" id="mcCloseBtn">✕</button>
+                    </div>
+
+                    <div class="mc-items" id="mcItemsContainer">
+                        <div class="mc-empty" id="mcEmptyState">
+                            السلة فاضية، ضيف منتجات عشان تظهر هنا
+                        </div>
+                    </div>
+
+                    <div class="mc-footer">
+                        <div class="mc-subtotal-row">
+                            <span>subtotal</span>
+                            <span class="mc-amount">$ <span id="mcSubtotal">0</span></span>
+                        </div>
+                        <div class="mc-footer-btns">
+                            <button class="mc-checkout-btn">CHECKOUT</button>
+                            <button class="mc-shop-btn" id="mcShopMoreBtn">
+                                SHOP MORE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="second-nav">
+            <nav class="navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+                            <li class="nav-item dropdown custom-category-dropdown mx-4">
+                                <a class="nav-link dropdown-toggle category-btn d-flex align-items-center justify-content-between"
+                                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="hamburger-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </span>
+                                        <span class="mx-3">Browse Category</span>
+                                    </div>
+                                </a>
+
+                                <ul class="dropdown-menu category-menu p-0 m-0 border-0 rounded-0 shadow-sm">
+                                    <li>
+                                        <a class="dropdown-item active-item" href="#deals">Top 10 Offers</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#electronics">Electronics & Digita</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#mobiles">Phones & Tablet</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#deals">Fashion & Clothings</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#electronics">Telivsion & Monitor</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#deals">Jewelry & Watches</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#appliances">Toys & Hobbies</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="nav-link mx-2" href="#home">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link mx-2" href="#about">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link mx-2" href="#electronics">Accesories</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mx-2" href="#deals">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mx-2" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                        <div class="btns g-5" id="authButtonsArea">
+                            <button class="text-light mx-4" id="loginOpenBtn">
+                                Login <i class="fas fa-sign-in-alt"></i>
+                            </button>
+                            <button class="text-light signUp" id="signupOpenBtn">
+                                Sign UP <i class="fas fa-user-plus"></i>
+                            </button>
+                        </div>
+                        <div class="btns g-5 d-none align-items-center" id="authUserArea">
+                            <span class="text-light mx-4" id="authUserName"></span>
+                            <button class="text-light signUp" id="logoutBtn">
+                                Logout <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <section id="home">
+        <div class="container my-4">
+            <div class="row g-2">
+                <div class="col-9">
+                    <div id="customCarousel" class="carousel slide custom-carousel-width" data-bs-ride="carousel"
+                        data-bs-interval="2000">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                        </div>
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100">
+                                <img src="img/banner_home1.png" class="d-block w-100 h-100 object-fit-cover"
+                                    alt="Slide 1" />
+                            </div>
+                            <div class="carousel-item h-100">
+                                <img src="img/banner_home2.png" class="d-block w-100 h-100 object-fit-cover"
+                                    alt="Slide 2" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 image-side">
+                    <img src="img/banner_home3.png" class="d-block w-100 h-100 object-fit-cover" alt="Tall Banner" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container my-5">
+            <div class="hot-title">
+                <span><i class="fa-solid fa-circle-info"></i> About Us</span>
+            </div>
+
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <h3 class="about-heading">Hawash Store, your trusted online shop</h3>
+                    <p class="about-text">
+                        Since day one, Hawash Store has been bringing genuine electronics, mobiles and home
+                        appliances to thousands of customers across Egypt at honest prices. Every product is
+                        checked before it leaves our warehouse, and every order is tracked from checkout to
+                        your doorstep.
+                    </p>
+                    <p class="about-text">
+                        Whether you're upgrading your TV, grabbing the latest phone, or kitting out your kitchen,
+                        we're here to make it simple, fast and secure.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="about-feature-card">
+                                <i class="fa-solid fa-truck-fast"></i>
+                                <h6>Fast Delivery</h6>
+                                <p>Nationwide shipping in 2-5 business days</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-feature-card">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <h6>Secure Payment</h6>
+                                <p>Your data and money are always protected</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-feature-card">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                <h6>Easy Returns</h6>
+                                <p>14-day hassle-free return policy</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-feature-card">
+                                <i class="fa-solid fa-headset"></i>
+                                <h6>24/7 Support</h6>
+                                <p>Our team is always one call away</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container my-5">
+        <div id="offerCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_2.png" class="img-fluid offer-img" alt="Laptop" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_4.png" class="img-fluid offer-img" alt="Tablet" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_3.png" class="img-fluid offer-img" alt="Headphones" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_1.png" class="img-fluid offer-img" alt="TV" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_3.png" class="img-fluid offer-img" alt="Laptop" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_2.png" class="img-fluid offer-img" alt="Tablet" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_4.png" class="img-fluid offer-img" alt="Headphones" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="offer-card d-flex align-items-center justify-content-between p-3 rounded">
+                                <img src="img/banner3_1.png" class="img-fluid offer-img" alt="TV" />
+                                <div class="offer-details">
+                                    <h6 class="fw-bold mb-1">Break Disc deals on this</h6>
+                                    <p class="mb-1 discount-text">Up To <span>70%</span></p>
+                                    <a href="#" class="shop-link fw-bold">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center gap-2 mt-4">
+                <button class="btn rounded-circle custom-nav-btn" type="button" data-bs-target="#offerCarousel"
+                    data-bs-slide="prev">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="btn rounded-circle custom-nav-btn" type="button" data-bs-target="#offerCarousel"
+                    data-bs-slide="next">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="hot-title" id="deals">
+        <span><i class="fa-solid fa-tags"></i> HOT DEALS</span>
+    </div>
+
+    <div class="container-fluid my-5">
+        <div class="tab-content" id="productTabContent">
+            <!-- Page 1 (Items 0 to 4) -->
+            <div class="tab-pane fade show active" id="page-1" role="tabpanel">
+                <div class="row g-3">
+                    <!-- 0 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">20%</span>
+                            <div class="product-img">
+                                <img src="img/product/0.png" alt="Smart TV / Full HD TV" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Smart TV / Full HD TV</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$800</span>
+                                <span class="old-price">$1000</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">15%</span>
+                            <div class="product-img">
+                                <img src="img/product/1.png" alt="Smartphone / Golden Smartphone" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Smartphone / Golden Smartphone</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$990</span>
+                                <span class="old-price">$1150</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">20%</span>
+                            <div class="product-img">
+                                <img src="img/product/2.png" alt="Windows Laptop / Convertible Laptop" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Windows Laptop / Convertible Laptop</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$1200</span>
+                                <span class="old-price">$1500</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">10%</span>
+                            <div class="product-img">
+                                <img src="img/product/3.png" alt="DSLR Camera / Professional Camera" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">DSLR Camera / Professional Camera</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$990</span>
+                                <span class="old-price">$1100</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">25%</span>
+                            <div class="product-img">
+                                <img src="img/product/4.png" alt="Dual Camera Smartphone" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Dual Camera Smartphone</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$700</span>
+                                <span class="old-price">$930</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2 (Items 5 to 9) -->
+            <div class="tab-pane fade" id="page-2" role="tabpanel">
+                <div class="row g-3">
+                    <!-- 5 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">15%</span>
+                            <div class="product-img">
+                                <img src="img/product/5.png" alt="Wireless Earbuds / Deep Bass" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Wireless Earbuds / Deep Bass</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$120</span>
+                                <span class="old-price">$140</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">20%</span>
+                            <div class="product-img">
+                                <img src="img/product/6.png" alt="Smart Home Hub / Voice Control" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Smart Home Hub / Voice Control</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$210</span>
+                                <span class="old-price">$260</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">25%</span>
+                            <div class="product-img">
+                                <img src="img/product/7.png" alt="Security Camera / Night Vision" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Security Camera / Night Vision</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$240</span>
+                                <span class="old-price">$320</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">10%</span>
+                            <div class="product-img">
+                                <img src="img/product/8.png" alt="Electric Scooter / Long Range" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Electric Scooter / Long Range</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$850</span>
+                                <span class="old-price">$950</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 9 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">20%</span>
+                            <div class="product-img">
+                                <img src="img/product/9.png" alt="Wi-Fi Router / Dual Band Speed" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Wi-Fi Router / Dual Band Speed</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$140</span>
+                                <span class="old-price">$175</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3 (Items 10 to 14) -->
+            <div class="tab-pane fade" id="page-3" role="tabpanel">
+                <div class="row g-3">
+                    <!-- 10 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">15%</span>
+                            <div class="product-img">
+                                <img src="img/product/10.png" alt="Wireless Headphones / Noise Canceling" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Wireless Headphones / Noise Canceling</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$160</span>
+                                <span class="old-price">$190</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 11 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">20%</span>
+                            <div class="product-img">
+                                <img src="img/product/11.png" alt="Bluetooth Speaker / Portable Bass" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Bluetooth Speaker / Portable Bass</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$90</span>
+                                <span class="old-price">$110</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 12 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">10%</span>
+                            <div class="product-img">
+                                <img src="img/product/12.png" alt="Smartwatch / Fitness Tracker" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Smartwatch / Fitness Tracker</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$180</span>
+                                <span class="old-price">$200</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 13 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">25%</span>
+                            <div class="product-img">
+                                <img src="img/product/13.png" alt="Gaming Console / Next-Gen Edition" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Gaming Console / Next-Gen Edition</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$590</span>
+                                <span class="old-price">$780</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 14 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">30%</span>
+                            <div class="product-img">
+                                <img src="img/product/14.png" alt="Tablet PC / Ultra Thin Display" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Tablet PC / Ultra Thin Display</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$320</span>
+                                <span class="old-price">$450</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 4 (Items 15 to 19) -->
+            <div class="tab-pane fade" id="page-4" role="tabpanel">
+                <div class="row g-3">
+                    <!-- 15 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">15%</span>
+                            <div class="product-img">
+                                <img src="img/product/15.png" alt="Wireless Headphones / Noise Canceling" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Wireless Headphones / Noise Canceling</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$160</span>
+                                <span class="old-price">$190</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 16 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">20%</span>
+                            <div class="product-img">
+                                <img src="img/product/16.png" alt="Bluetooth Speaker / Portable Bass" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Bluetooth Speaker / Portable Bass</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$90</span>
+                                <span class="old-price">$110</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 17 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">10%</span>
+                            <div class="product-img">
+                                <img src="img/product/17.png" alt="Smartwatch / Fitness Tracker" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Smartwatch / Fitness Tracker</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$180</span>
+                                <span class="old-price">$200</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 18 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">25%</span>
+                            <div class="product-img">
+                                <img src="img/product/18.png" alt="Gaming Console / Next-Gen Edition" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Gaming Console / Next-Gen Edition</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$590</span>
+                                <span class="old-price">$780</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 19 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">30%</span>
+                            <div class="product-img">
+                                <img src="img/product/19.png" alt="Tablet PC / Ultra Thin Display" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Tablet PC / Ultra Thin Display</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$320</span>
+                                <span class="old-price">$450</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 5 (Items 20 to 23) -->
+            <div class="tab-pane fade" id="page-5" role="tabpanel">
+                <div class="row g-3">
+                    <!-- 20 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">20%</span>
+                            <div class="product-img">
+                                <img src="img/product/20.png" alt="4K Monitor / Immersive Gaming" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">4K Monitor / Immersive Gaming</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$350</span>
+                                <span class="old-price">$430</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 21 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">15%</span>
+                            <div class="product-img">
+                                <img src="img/product/21.png" alt="Portable Projector / Full HD" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Portable Projector / Full HD</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$450</span>
+                                <span class="old-price">$530</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 22 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">25%</span>
+                            <div class="product-img">
+                                <img src="img/product/22.png" alt="Graphics Drawing Tablet / Pen Included" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">Graphics Drawing Tablet / Pen Included</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$280</span>
+                                <span class="old-price">$370</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 23 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                        <div class="product-card">
+                            <span class="discount-badge">10%</span>
+                            <div class="product-img">
+                                <img src="img/product/23.png" alt="USB-C Docking Station / Multi-Port" />
+                            </div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="product-title">
+                                <a href="#" class="text-decoration-none">USB-C Docking Station / Multi-Port</a>
+                            </h3>
+                            <div class="price-box">
+                                <span class="current-price">$150</span>
+                                <span class="old-price">$168</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>add to cart</span>
+                                </button>
+                                <button class="btn-wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="row g-4 promo-row-2">
+            <div class="col-md-6">
+                <a href="#"><img src="img/banner_box4.jpg" class="w-100 image-hash-lg rounded" alt="banner" /></a>
+            </div>
+            <div class="col-md-6">
+                <a href="#"><img src="img/banner_box5.jpg" class="w-100 image-hash-lg rounded" alt="banner" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hot-title d-flex align-items-center justify-content-between" id="electronics">
+        <span><i class="fa-solid fa-tags"></i> Electronics</span>
+        <div class="d-flex gap-2 me-3">
+            <button class="btn rounded-circle custom-nav-btn section-nav-btn" type="button"
+                data-bs-target="#electronicsCarousel" data-bs-slide="prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="btn rounded-circle custom-nav-btn section-nav-btn" type="button"
+                data-bs-target="#electronicsCarousel" data-bs-slide="next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="container-fluid my-5">
+        <div id="electronicsCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                <!-- Page 1 (Items 0 to 4) -->
+                <div class="carousel-item active" id="page-3">
+                    <div class="row g-3">
+                        <!-- 0 (عليه خصم) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">20%</span>
+                                <div class="product-img">
+                                    <img src="img/product/0.png" alt="Smart TV / Full HD TV" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smart TV / Full HD TV</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$800</span>
+                                    <span class="old-price">$1000</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/1.png" alt="Smartphone / Golden Smartphone" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smartphone / Golden Smartphone</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$990</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/2.png" alt="Windows Laptop / Convertible Laptop" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Windows Laptop / Convertible Laptop</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$1200</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/3.png" alt="DSLR Camera / Professional Camera" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">DSLR Camera / Professional Camera</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$990</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/4.png" alt="Dual Camera Smartphone" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Dual Camera Smartphone</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$700</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 2 (Items 5 to 9) -->
+                <div class="carousel-item" id="page">
+                    <div class="row g-3">
+                        <!-- 1 (عليه خصم) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">15%</span>
+                                <div class="product-img">
+                                    <img src="img/product/5.png" alt="Wireless Earbuds / Deep Bass" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Wireless Earbuds / Deep Bass</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$120</span>
+                                    <span class="old-price">$140</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/20.png" alt="Smart Home Hub / Voice Control" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smart Home Hub / Voice Control</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$320</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 (عليه خصم) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">25%</span>
+                                <div class="product-img">
+                                    <img src="img/product/7.png" alt="Security Camera / Night Vision" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Security Camera / Night Vision</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$240</span>
+                                    <span class="old-price">$320</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/8.png" alt="Electric Scooter / Long Range" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Electric Scooter / Long Range</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$850</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/16.png" alt="Wi-Fi Router / Dual Band Speed" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Wi-Fi Router / Dual Band Speed</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$260</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hot-title d-flex align-items-center justify-content-between" id="appliances">
+        <span><i class="fa-solid fa-tags"></i> Appliances</span>
+        <div class="d-flex gap-2 me-3">
+            <button class="btn rounded-circle custom-nav-btn section-nav-btn" type="button"
+                data-bs-target="#appliancesCarousel" data-bs-slide="prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="btn rounded-circle custom-nav-btn section-nav-btn" type="button"
+                data-bs-target="#appliancesCarousel" data-bs-slide="next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid my-5">
+        <div id="appliancesCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                <!-- Page 1 (Items 0 to 4) -->
+                <div class="carousel-item active" id="app-page-1">
+                    <div class="row g-3">
+                        <!-- 0 (عليه خصم) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">20%</span>
+                                <div class="product-img">
+                                    <img src="img/product/12.png" alt="Smart TV / Full HD TV" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smart TV / Full HD TV</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$800</span>
+                                    <span class="old-price">$1000</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/13.png" alt="Smartphone / Golden Smartphone" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smartphone / Golden Smartphone</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$990</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/20.png" alt="Windows Laptop / Convertible Laptop" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Windows Laptop / Convertible Laptop</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$1200</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/17.png" alt="DSLR Camera / Professional Camera" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">DSLR Camera / Professional Camera</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$990</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/16.png" alt="Dual Camera Smartphone" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Washing Machine 959 Series 8kg Senator
+                                        Aqua</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$700</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 2 (Items 5 to 9) -->
+                <div class="carousel-item" id="app-page-2">
+                    <div class="row g-3">
+                        <!-- 1 (عليه خصم) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">15%</span>
+                                <div class="product-img">
+                                    <img src="img/product/5.png" alt="Wireless Earbuds / Deep Bass" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Wireless Earbuds / Deep Bass</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$120</span>
+                                    <span class="old-price">$140</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/20.png" alt="Smart Home Hub / Voice Control" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smart Home Hub / Voice Control</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$320</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 (عليه خصم) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">25%</span>
+                                <div class="product-img">
+                                    <img src="img/product/7.png" alt="Security Camera / Night Vision" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Security Camera / Night Vision</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$240</span>
+                                    <span class="old-price">$320</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/8.png" alt="Electric Scooter / Long Range" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Electric Scooter / Long Range</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$850</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5 (بدون خصم - سعر واحد) -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/16.png" alt="Wi-Fi Router / Dual Band Speed" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Wi-Fi Router / Dual Band Speed</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$260</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row g-4 promo-row-2">
+            <div class="col-md-4">
+                <a href="#"><img src="img/banner_box1.jpg" class="w-100 image-hash-lg rounded"
+                        alt="Smartphone Bestseller Products" /></a>
+            </div>
+            <div class="col-md-4">
+                <a href="#"><img src="img/banner_box2.jpg" class="w-100 image-hash-lg rounded"
+                        alt="Big Sale 30% Trending Camera" /></a>
+            </div>
+            <div class="col-md-4">
+                <a href="#"><img src="img/banner_box3.jpg" class="w-100 image-hash-lg rounded"
+                        alt="Home Accessories Big Sale" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hot-title d-flex align-items-center justify-content-between" id="mobiles">
+        <span><i class="fa-solid fa-tags"></i> Mobiles</span>
+        <div class="d-flex gap-2 me-3">
+            <button class="btn rounded-circle custom-nav-btn section-nav-btn" type="button"
+                data-bs-target="#mobilesCarousel" data-bs-slide="prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="btn rounded-circle custom-nav-btn section-nav-btn" type="button"
+                data-bs-target="#mobilesCarousel" data-bs-slide="next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid my-5">
+        <div id="mobilesCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active" id="mob-page-1">
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">10%</span>
+                                <div class="product-img">
+                                    <img src="img/product/9.png" alt="Flagship Smartphone / 256GB" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Flagship Smartphone / 256GB</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$899</span>
+                                    <span class="old-price">$999</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/10.png" alt="Smartphone Lite / 128GB" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smartphone Lite / 128GB</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$399</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">19%</span>
+                                <div class="product-img">
+                                    <img src="img/product/11.png" alt="Foldable Phone / Dual Screen" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Foldable Phone / Dual Screen</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$1299</span>
+                                    <span class="old-price">$1599</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/13.png" alt="Gaming Phone / 165Hz Display" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Gaming Phone / 165Hz Display</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$649</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">15%</span>
+                                <div class="product-img">
+                                    <img src="img/product/19.png" alt="Smartphone Pro Max / 512GB" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Smartphone Pro Max / 512GB</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$1099</span>
+                                    <span class="old-price">$1299</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" id="mob-page-2">
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/14.png" alt="Budget Smartphone / Dual SIM" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Budget Smartphone / Dual SIM</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$199</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">15%</span>
+                                <div class="product-img">
+                                    <img src="img/product/17.png" alt="Camera Phone / Triple Lens" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Camera Phone / Triple Lens</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$549</span>
+                                    <span class="old-price">$649</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/18.png" alt="5G Smartphone / Fast Charging" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">5G Smartphone / Fast Charging</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$479</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <span class="discount-badge">13%</span>
+                                <div class="product-img">
+                                    <img src="img/product/21.png" alt="Compact Phone / Small & Light" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Compact Phone / Small & Light</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$329</span>
+                                    <span class="old-price">$379</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="img/product/22.png" alt="Rugged Phone / Waterproof" />
+                                </div>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <h3 class="product-title">
+                                    <a href="#" class="text-decoration-none">Rugged Phone / Waterproof</a>
+                                </h3>
+                                <div class="price-box">
+                                    <span class="current-price">$289</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>add to cart</span>
+                                    </button>
+                                    <button class="btn-wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact">
+        <div class="container my-5">
+            <div class="hot-title">
+                <span><i class="fa-solid fa-envelope-open-text"></i> Contact Us</span>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <p class="about-text mb-4">
+                        Got a question about an order, a product, or just want to say hi? Reach out through
+                        any of the channels below and our team will get back to you as soon as possible.
+                    </p>
+                    <div class="contact-hours">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <span>Sat - Thu, 9:00 AM - 10:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        <div class="col-sm-6 col-lg-4">
+                            <a href="mailto:support@hawashstore.com" class="contact-card text-decoration-none">
+                                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <h6>Email</h6>
+                                <p>support@hawashstore.com</p>
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <a href="tel:01113639546" class="contact-card text-decoration-none">
+                                <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                                <h6>Phone</h6>
+                                <p dir="ltr">01113639546</p>
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <a href="tel:13115" class="contact-card text-decoration-none">
+                                <div class="contact-icon"><i class="fa-solid fa-headset"></i></div>
+                                <h6>Hotline</h6>
+                                <p dir="ltr">13115</p>
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="contact-card">
+                                <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <h6>Location</h6>
+                                <p>New Cairo, Cairo, Egypt</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <a href="#" class="contact-card text-decoration-none">
+                                <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                                <h6>WhatsApp</h6>
+                                <p dir="ltr">01113639546</p>
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="contact-card">
+                                <div class="contact-icon"><i class="fa-solid fa-store"></i></div>
+                                <h6>Showroom</h6>
+                                <p>Visit us in New Cairo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row py-5 gy-4">
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="footer-brand d-inline-flex align-items-center gap-2 mb-3 text-decoration-none">
+                        <span class="footer-logo-icon">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </span>
+                        <span class="footer-brand-text">
+                            <span class="brand-name">Hawash</span>
+                            <span class="brand-tagline"><span class="text-warning">Online</span> Shop</span>
+                        </span>
+                    </a>
+                    <p class="footer-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
+                        vero?
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title">Find It Fast</h6>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#" class="active"><i class="fa-solid fa-caret-right"></i> Laptops &amp;
+                                Computers</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Smart Phones &amp;
+                                Tablets</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> TV &amp; Audio</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Appliances</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Jewelry &amp;
+                                Watches</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Your Account</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Returns &amp;
+                                Exchanges</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Shipping &amp;
+                                Delivery</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Estimated Delivery
+                                Time</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Purchase History</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title">Service us</h6>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Support Center</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Term &amp;
+                                Conditions</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> Help</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-caret-right"></i> FAQS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom d-flex flex-wrap gap-3 justify-content-between align-items-center py-3">
+                <p class="mb-0">
+                    &copy; <span class="text-warning">Hawash Store</span> All Rights
+                    Reserved.
+                </p>
+                <div class="payment-icons">
+                    <span class="pay-badge pay-mastercard"><i class="fa-brands fa-cc-mastercard"></i></span>
+                    <span class="pay-badge pay-amex">AMEX</span>
+                    <span class="pay-badge pay-visa">VISA</span>
+                    <span class="pay-badge pay-discover">DISCOVER</span>
+                    <span class="pay-badge pay-paypal"><i class="fa-brands fa-cc-paypal"></i></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="auth-overlay" id="loginOverlay">
+        <div class="auth-box">
+            <img src="img\white_logo.png" alt="Hawash Store" class="auth-gate-logo" />
+            <h3>Login</h3>
+            <p class="auth-gate-msg" id="loginGateMsg">
+                🔒 محتاج تسجل دخولك الأول عشان تقدر تتصفح المتجر وتشوف المنتجات.
+            </p>
+            <form id="loginForm">
+                <div class="auth-field">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required placeholder="you@example.com" />
+                </div>
+                <div class="auth-field">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••" />
+                </div>
+                <div class="auth-error" id="loginError"></div>
+                <button type="submit" class="auth-submit">Login</button>
+            </form>
+            <div class="auth-switch">
+                Don't have an account? <a id="switchToSignup">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-overlay" id="signupOverlay">
+        <div class="auth-box">
+            <img src="img/logo.png" alt="Hawash Store" class="auth-gate-logo" />
+            <h3>Sign Up</h3>
+            <p class="auth-gate-msg" id="signupGateMsg">
+                🔒 اعمل حساب جديد الأول عشان تقدر تدخل المتجر وتبدأ تتسوق.
+            </p>
+            <form id="signupForm">
+                <div class="auth-field">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" required placeholder="Your full name" />
+                </div>
+                <div class="auth-field">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" required placeholder="you@example.com" />
+                </div>
+                <div class="auth-field">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" required placeholder="••••••••" />
+                </div>
+                <div class="auth-error" id="signupError"></div>
+                <button type="submit" class="auth-submit">Create Account</button>
+            </form>
+            <div class="auth-switch">
+                Already have an account? <a id="switchToLogin">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div class="toast-stack" id="toastStack"></div>
+
+    <!-- Back to top -->
+    <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
